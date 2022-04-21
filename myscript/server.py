@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import socket
 from colorama import *
-from .sendRecv import *
-
+try:
+	from .sendRecv import *
+except:
+	from sendRecv import * 
 
 class Server:
 	def __init__(self):
@@ -22,7 +24,7 @@ class Server:
 				self.socket.listen(5)
 				self.socketClient, self.address = self.socket.accept()
 				
-				print("{self.address} connected")
+				print(f"{self.address} connected")
 				
 				prompt = getMessage(self.socketClient)
 

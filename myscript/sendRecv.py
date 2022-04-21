@@ -1,5 +1,5 @@
-import threading
 from colorama import *
+import threading
 
 
 # global variable

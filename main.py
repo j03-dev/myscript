@@ -1,9 +1,11 @@
-from myscript.exploit import Exploit, art_asci
+from myscript.exploit import Exploit, text_asci
 import sys
 
+__author__ = "Nomeniavo Joe"
+__version__ = 1.0
 
 def main():
-	art_asci()
+	print(text_asci)
 	run = True
 	while run:
 		try:
@@ -14,4 +16,6 @@ def main():
 		except KeyboardInterrupt:
 			sys.exit(1)
 
-main()
+
+if __name__ == "__main__":
+	main()
