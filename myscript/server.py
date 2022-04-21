@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import socket
 from colorama import *
-import sendRecv
+from .sendRecv import *
 
 
 class Server:
@@ -11,7 +11,6 @@ class Server:
 		self.address = None
 		self.run = True
 		self.daemon = None
-   
 
 	def runserver(self, host, port):
 		self.socket.bind((host, port))
@@ -25,11 +24,11 @@ class Server:
 				
 				print("{self.address} connected")
 				
-				prompt = sendRecv.getMessage(self.socketClient)
+				prompt = getMessage(self.socketClient)
 
 				while self.run:
 					if self.daemon is None:
-						self.daemon = sendRecv.ThreadRecv(socket=self.socketClient)
+						self.daemon = ThreadRecv(socket=self.socketClient)
 						self.daemon.start()
 
 					# format the prompt 
@@ -41,26 +40,26 @@ class Server:
 					if msg == "quit" or msg == "exit":
 						self.run = False
 						del self.daemon
-						sendRecv.sendMessage(socket=self.socketClient, message=msg)
+						sendMessage(socket=self.socketClient, message=msg)
 						break
 
 					elif msg[:8] == "download":
 						# send commmand to client
-						sendRecv.sendMessage(socket=self.socketClient, message=msg)
+						sendMessage(socket=self.socketClient, message=msg)
 						# the name of file to download
 						file_name = msg[9:]
 						# get response from client
-						response = sendRecv.getMessage(socket=self.socketClient)
+						response = getMessage(socket=self.socketClient)
 						if response == "found":
 							print(Fore.BLUE + 'Start' + Fore.WHITE)
 							# start receive file from client
-							sendRecv.receiveFile(socketClient=self.socketClient, fileName=file_name)
+							receiveFile(socketClient=self.socketClient, fileName=file_name)
 						elif response == "not_found":
 							print(Fore.RED + 'File not found' + Fore.WHITE)
 						continue
 
 					else:
-						sendRecv.sendMessage(socket=self.socketClient, message=msg)
+						sendMessage(socket=self.socketClient, message=msg)
 						continue
 
 			except Exception as e:
