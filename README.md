@@ -1,6 +1,6 @@
 # MYSCRIP
 
-## WHO TO USE
+## WHO TO USE Myscript
 
 ### 1 - install the requirement
 ```bash
@@ -16,4 +16,4 @@ python main.py
 ```
 
 ##  ABOUT
-### This is app type revershell. Writting on python by my, __author__ == Nomeniavo Joe
+### This is app type revershell.Writting on python by my, Nomeniavo Joe

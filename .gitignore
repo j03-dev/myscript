@@ -1,4 +1,4 @@
 .idea/
 
-__pycache__/
-myscript/__pycache__/
+./__pycache__/
+./myscript/__pycache__/
