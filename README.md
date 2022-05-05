@@ -16,4 +16,4 @@ python main.py
 ```
 
 ##  ABOUT
-### This is app type revershell.Writting on python by my, Nomeniavo Joe
+### This is app type revershell.Writting on python by me, Nomeniavo Joe
